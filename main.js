@@ -40,9 +40,7 @@ window.handleImageUpload = function(event) {
     reader.onload = function(e) {
         previewImg.src = e.target.result;
         previewContainer.style.display = 'block';
-        
-        // Получаем чистый Base64 (без заголовков data:image)
-        uploadedImageBase64 = e.target.result.split(',')[1];
+        uploadedImageBase64 = e.target.result.split(',')[1]; // Берем чистый base64 код
     }
     reader.readAsDataURL(file);
 }
