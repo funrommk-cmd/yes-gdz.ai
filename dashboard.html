@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yes-gdz.ai | Панель предметів</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .grid-subjects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+        .subject-card {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px;
+            padding: 28px 16px; text-align: center; cursor: pointer; transition: all 0.25s ease;
+            text-decoration: none; color: var(--text-main); display: flex; flex-direction: column; align-items: center; gap: 12px;
+        }
+        .subject-card span { font-size: 2rem; }
+        .subject-card h4 { font-size: 1.05rem; font-weight: 600; }
+        .subject-card:hover {
+            background: rgba(56, 189, 248, 0.08); border-color: var(--accent);
+            transform: translateY(-4px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.05);
+        }
+        .user-footer { margin-top: 32px; text-align: center; border-top: 1px solid var(--border); padding-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container" style="max-width: 550px;">
+        <h2>Обери <span class="accent-text">предмет</span></h2>
+        <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">Рішення адаптуються під вимоги твого вчителя</p>
+        
+        <div class="grid-subjects">
+            <a href="subject.html?name=algebra" class="subject-card"><span>📐</span><h4>Алгебра</h4></a>
+            <a href="subject.html?name=geometry" class="subject-card"><span>📏</span><h4>Геометрія</h4></a>
+            <a href="subject.html?name=physics" class="subject-card"><span>⚛️</span><h4>Фізика</h4></a>
+            <a href="subject.html?name=chemistry" class="subject-card"><span>🧪</span><h4>Хімія</h4></a>
+        </div>
+
+        <div class="user-footer">
+            <button onclick="logout()" class="btn-secondary" style="width: auto; padding: 10px 24px;">🚪 Вийти з акаунту</button>
+        </div>
+    </div>
+
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yes-gdz.ai | Помічник</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="max-width: 650px;">
+        <a href="dashboard.html" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-bottom: 12px;">← До предметів</a>
+        <h2>Предмет: <span id="subjectTitle" class="accent-text">...</span></h2>
+
+        <!-- Капризы учителя -->
+        <div class="input-group">
+            <label for="teacherRules">⚙️ Капризи та вимоги твого вчителя до оформлення:</label>
+            <textarea id="teacherRules" rows="3" placeholder="Наприклад: Вимагає розписувати ОДЗ, обов'язково писати слово 'Дано', не використовувати дискримінант..."></textarea>
+            <button onclick="saveCurrentRules()" class="btn-secondary" style="margin-top: 8px; padding: 10px; font-size: 0.9rem;">Зберегти вимоги вчителя</button>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 24px 0;">
+
+        <!-- Загрузка фото / Камера -->
+        <div class="input-group" style="text-align: center;">
+            <label style="text-align: left;">📸 Сфотографувати або завантажити завдання:</label>
+            <input type="file" id="imageInput" accept="image/*" capture="environment" style="display: none;" onchange="handleImageUpload(event)">
+            <button onclick="document.getElementById('imageInput').click()" class="btn-secondary" style="border-color: var(--accent); color: var(--accent); margin-top: 4px;">
+                📷 Відкрити камеру / Галерею
+            </button>
+            
+            <!-- Контейнер предварительного просмотра изображения -->
+            <div id="imagePreviewContainer" style="display: none; margin-top: 15px; position: relative;">
+                <img id="previewImage" src="" alt="Прев'ю завдання" style="max-width: 100%; max-height: 200px; border-radius: 12px; border: 1px solid var(--border);">
+                <button onclick="clearImage()" style="background: var(--error); color: white; width: auto; padding: 6px 12px; font-size: 0.8rem; border-radius: 8px; margin: 8px auto 0 auto;">Видалити фото</button>
+            </div>
+        </div>
+
+        <!-- Текстовое поле задачи -->
+        <div class="input-group">
+            <label for="userTask">📝 Текст завдання або рівняння (якщо немає фото):</label>
+            <textarea id="userTask" rows="3" placeholder="Скопіюй сюди умову або допиши нюансы..."></textarea>
+        </div>
+        
+        <button onclick="solveTaskWithGemini()">✨ Розв'язати з ІІ (Gemini)</button>
+
+        <!-- Окно вывода результатов -->
+        <h3 style="margin-top: 30px; text-align: left;">📋 Покрокове рішення:</h3>
+        <div id="aiResult" style="white-space: pre-wrap; background: rgba(13, 18, 30, 0.9); border: 1px solid var(--border); border-radius: 14px; padding: 20px; margin-top: 10px; font-size: 1.05rem; line-height: 1.6; min-height: 100px;">
+            Тут з'явиться відповідь, ідеально адаптована під вимоги твого вчителя...
+        </div>
+    </div>
+
+    <script type="module" src="auth.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
